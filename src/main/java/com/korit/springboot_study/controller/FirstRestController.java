@@ -1,12 +1,11 @@
 package com.korit.springboot_study.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.korit.springboot_study.dto.request.study.ReqStudentDto;
 import io.swagger.annotations.ApiParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import java.util.Map;
 
 
 @RestController
-@Api(tags = "REST API 수업")
+@Tag(name = "REST API 수업")
 public class FirstRestController {
 
     @GetMapping("/api/hello")
@@ -38,10 +37,10 @@ public class FirstRestController {
         return Map.of("name", "김준일");
     }
 
-    @ApiOperation(value = "학생 조회(일반 for 선형탐색)", notes = "일반 for문을 사용하여 선형 탐색학습")
+    @Operation(summary = "학생 조회(일반 for 선형탐색)", description = "일반 for문을 사용하여 선형 탐색학습")
     @GetMapping("/api/student")
     public Map<String, Object> getStudent(
-            @ApiParam(value = "조회할 학생 인덱스", required = false)
+            @Parameter(description = "조회할 학생 인덱스", required = false)
             @RequestParam(required = false) int studentId
     ) {
         List<Map<String, Object>> students = new ArrayList<>();
@@ -110,11 +109,11 @@ public class FirstRestController {
     public Map<String, Object> getStudent4(
             @ApiParam(value = "학생 ID", required = true)
             @PathVariable int studentId,
+            @ModelAttribute
+            ReqStudentDto reqStudentDto) {
 
-            @RequestParam String name,
-            @RequestParam int age) {
-
-        return Map.of("id", studentId, "name", name, "age", age);
+//        return Map.of("id", studentId, "name", reqStudentDto.getName(), "age", reqStudentDto.getAge());
+        return Map.of("id", 11, "name", reqStudentDto.getName(), "age", reqStudentDto.getAge());
     }
 }
 
