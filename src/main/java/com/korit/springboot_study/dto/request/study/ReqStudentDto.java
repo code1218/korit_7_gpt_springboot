@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 @Data
-@ApiModel(value = "학생정보 조회 학습 DTO")
+//@ApiModel(description = "학생정보 조회 학습 DTO", value = "학생정보 조회 학습 DTO")
 public class ReqStudentDto {
     @NonNull
     @ApiModelProperty(value = "학생 이름", example = "김준일", required = true)
