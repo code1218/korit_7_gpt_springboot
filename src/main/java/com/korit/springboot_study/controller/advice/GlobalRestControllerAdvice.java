@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -26,6 +27,16 @@ public class GlobalRestControllerAdvice {
     @ExceptionHandler(value = CustomDuplicateKeyException.class)
     public ResponseEntity<BadRequestResponseDto<?>> duplicateKey(CustomDuplicateKeyException e) {
         return ResponseEntity.status(400).body(new BadRequestResponseDto<>(e.getErrors()));
+    }
+
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    public ResponseEntity<BadRequestResponseDto<?>> validation(ConstraintViolationException e) {
+        return ResponseEntity.status(400).body(new BadRequestResponseDto<>(
+                e.getConstraintViolations()
+                        .stream()
+                        .map(constraintViolation -> Map.of(constraintViolation.getPropertyPath(), constraintViolation.getMessage()))
+                        .collect(Collectors.toList())
+        ));
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)

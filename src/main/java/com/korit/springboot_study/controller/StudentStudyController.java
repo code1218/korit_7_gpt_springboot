@@ -20,6 +20,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -56,8 +57,8 @@ public class StudentStudyController {
     @PutMapping("/api/study/major/{majorId}")
     public ResponseEntity<SuccessResponseDto<?>> updateMajor(
             @ApiParam(value = "학과 ID", example = "1", required = true)
-            @PathVariable int majorId,
-            @RequestBody ReqUpdateMajorDto reqUpdateMajorDto) {
+            @PathVariable @Min(value = 1, message = "학과 ID는 1이상의 정수여야합니다.") int majorId,
+            @Valid @RequestBody ReqUpdateMajorDto reqUpdateMajorDto) throws MethodArgumentNotValidException {
 
         return ResponseEntity.ok().body(null);
     }
