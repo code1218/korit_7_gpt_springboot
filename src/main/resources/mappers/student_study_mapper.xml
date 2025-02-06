@@ -20,6 +20,11 @@
         values (default, #{majorName})
     </insert>
 
+    <insert id="insertInstructor" keyProperty="instructorId" useGeneratedKeys="true">
+        insert into instructor_tb
+        values (default, #{instructorName})
+    </insert>
+
     <select id="selectMajorsAll" resultMap="majorResultMap">
         select
             major_id,
