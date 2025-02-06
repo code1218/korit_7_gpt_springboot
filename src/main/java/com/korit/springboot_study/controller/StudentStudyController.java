@@ -14,13 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.regex.Pattern;
 
 @RestController
+@Validated
 public class StudentStudyController {
 
     @Autowired
@@ -38,18 +42,8 @@ public class StudentStudyController {
     }
 
     @PostMapping("/api/study/major")
-    public ResponseEntity<SuccessResponseDto<Major>> addMajor(@RequestBody ReqAddMajorDto reqAddMajorDto) throws MethodArgumentNotValidException {
+    public ResponseEntity<SuccessResponseDto<Major>> addMajor(@Valid @RequestBody ReqAddMajorDto reqAddMajorDto) throws MethodArgumentNotValidException {
         System.out.println(reqAddMajorDto);
-        boolean isNull = reqAddMajorDto == null;
-        boolean isBlank = reqAddMajorDto.getMajorName().isBlank();
-        boolean isNotKor = !Pattern.matches("^[ㄱ-ㅎ|가-힣]*$", reqAddMajorDto.getMajorName());
-
-        if(isNull || isBlank || isNotKor) {
-            BindingResult bindingResult = new BeanPropertyBindingResult(null, "major");
-
-            throw new MethodArgumentNotValidException(null, bindingResult);
-        }
-
         return ResponseEntity.ok().body(studentStudyService.addMajor(reqAddMajorDto));
     }
 
