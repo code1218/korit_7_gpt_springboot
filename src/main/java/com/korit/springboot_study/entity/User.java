@@ -8,9 +8,13 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class Author {
-    private int authorId;
-    private String authorName;
+@NoArgsConstructor
+public class User {
+    private int userId;
+    private String username;
+    @JsonIgnore
+    private String password;
+    private String name;
+    private String email;
 }
