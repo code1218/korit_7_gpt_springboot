@@ -1,6 +1,7 @@
 package com.korit.springboot_study.service;
 
 import com.korit.springboot_study.dto.request.ReqAddCategoryDto;
+import com.korit.springboot_study.dto.request.ReqSearchCategoryDto;
 import com.korit.springboot_study.entity.Category;
 import com.korit.springboot_study.repository.CategoryRepository;
 import org.apache.ibatis.javassist.NotFoundException;
@@ -20,8 +21,8 @@ public class CategoryService {
                 .get();
     }
 
-    public List<Category> getCategories(String keyword) throws Exception {
-        return categoryRepository.findAllByNameContaining(keyword)
+    public List<Category> getCategories(ReqSearchCategoryDto reqSearchCategoryDto) throws Exception {
+        return categoryRepository.findAllByNameContaining(reqSearchCategoryDto.getKeyword())
                 .orElseThrow(() -> new NotFoundException("조회된 카테고리가 없습니다."));
     }
 }

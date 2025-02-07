@@ -1,6 +1,7 @@
 package com.korit.springboot_study.controller;
 
 import com.korit.springboot_study.dto.request.ReqAddCategoryDto;
+import com.korit.springboot_study.dto.request.ReqSearchCategoryDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Category;
 import com.korit.springboot_study.service.CategoryService;
@@ -26,10 +27,10 @@ public class CategoryController {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(categoryService.addCategory(reqAddCategoryDto)));
     }
 
-    @ApiOperation(value = "도서 검색")
+    @ApiOperation(value = "도서 카테고리 검색")
     @GetMapping("/api/book/categories")
-    public ResponseEntity<SuccessResponseDto<List<Category>>> searchCategory(@RequestParam(defaultValue = "", required = false) String keyword) throws Exception {
-        return ResponseEntity.ok().body(new SuccessResponseDto<>(categoryService.getCategories(keyword)));
+    public ResponseEntity<SuccessResponseDto<List<Category>>> searchCategory(@ModelAttribute ReqSearchCategoryDto searchCategoryDto) throws Exception {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(categoryService.getCategories(searchCategoryDto)));
     }
 
 
