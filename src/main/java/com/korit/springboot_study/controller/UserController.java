@@ -1,6 +1,7 @@
 package com.korit.springboot_study.controller;
 
 import com.korit.springboot_study.dto.request.ReqAddUserDto;
+import com.korit.springboot_study.dto.request.ReqModifyUserDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.User;
 import com.korit.springboot_study.service.UserService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 @Validated
@@ -36,4 +38,36 @@ public class UserController {
     public ResponseEntity<SuccessResponseDto<User>> addUser(@Valid @RequestBody ReqAddUserDto reqAddUserDto) throws MethodArgumentNotValidException {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(userService.addUser(reqAddUserDto)));
     }
+
+    @GetMapping("/api/user/{userId}")
+    @ApiOperation(value = "사용자 ID로 조회")
+    public ResponseEntity<SuccessResponseDto<User>> getUser(
+            @Min(value = 1, message = "사용자 ID는 1이상의 정수입니다.")
+            @PathVariable int userId) {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
+    }
+
+    @PutMapping("/api/user/{userId}")
+    @ApiOperation(value = "사용자 수정")
+    public ResponseEntity<SuccessResponseDto<?>> modifyUser(
+            @Min(value = 1, message = "사용자 ID는 1이상의 정수입니다.")
+            @PathVariable int userId,
+            @Valid @RequestBody ReqModifyUserDto reqModifyUserDto
+    ) {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
