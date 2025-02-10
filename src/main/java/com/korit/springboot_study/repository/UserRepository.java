@@ -25,4 +25,18 @@ public class UserRepository {
     public Optional<User> findByUsername(String username) {
         return Optional.ofNullable(userMapper.selectByUsername(username));
     }
+
+    public Optional<User> findById(int id) {
+        return Optional.ofNullable(userMapper.selectById(id));
+    }
 }
+
+
+
+
+
+
+
+
+
+
