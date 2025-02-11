@@ -10,4 +10,5 @@ import java.util.List;
 public interface BookMapper {
     int insert(Book book);
     List<Book> selectAllByNameContaining(@Param(value = "bookName") String bookName);
+    int getLikeCount(int postId);
 }

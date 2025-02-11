@@ -13,3 +13,10 @@ mybatis:
     - /mappers/*.xml
     - /mappers/book/*.xml
     - /mappers/user/*.xml
+    - /mappers/post/*.xml
+
+
+
+
+
+

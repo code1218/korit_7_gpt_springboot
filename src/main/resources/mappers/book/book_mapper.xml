@@ -66,5 +66,16 @@
         where
             bt.book_name like concat("%", #{bookName}, "%")
     </select>
+    <select id="getLikeCount" resultType="java.lang.Integer">
+        select
+            count(post_id)
+        from
+            post_like_tb
+        where
+            post_id = 1
+        group by
+            post_id
+
+    </select>
 
 </mapper>
