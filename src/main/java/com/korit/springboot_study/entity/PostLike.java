@@ -11,15 +11,11 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Post {
+public class PostLike {
+    private int postLikeId;
     private int postId;
     private int userId;
-    private String title;
-    private String content;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     private int likeCount;
-
-    private User user;
 }

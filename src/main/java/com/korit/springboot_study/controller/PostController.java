@@ -46,6 +46,16 @@ public class PostController {
                 .body(new SuccessResponseDto<>(postService.getAllPostsByKeywordContaining(page, size, keyword)));
     }
 
+    @PostMapping("/api/post/{postId}/like")
+    public ResponseEntity<SuccessResponseDto<Post>> likePost(@PathVariable int postId) throws Exception {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
+    }
+
+    @DeleteMapping("/api/post/{postId}/like")
+    public ResponseEntity<SuccessResponseDto<Post>> dislikePost(@PathVariable int postId) throws Exception {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
+    }
+
 }
 
 
