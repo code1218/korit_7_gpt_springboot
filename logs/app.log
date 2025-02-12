@@ -1,0 +1,14 @@
+2025-02-12 12:27:59.266 [restartedMain] INFO  com.korit.springboot_study.SpringbootStudyApplication - Starting SpringbootStudyApplication using Java 16.0.2 on DESKTOP-OM1H9HN with PID 13240 (C:\korea-gpt\springboot_study\target\classes started by user in C:\korea-gpt\springboot_study)
+2025-02-12 12:27:59.267 [restartedMain] DEBUG com.korit.springboot_study.SpringbootStudyApplication - Running with Spring Boot v2.6.6, Spring v5.3.18
+2025-02-12 12:27:59.268 [restartedMain] INFO  com.korit.springboot_study.SpringbootStudyApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-12 12:27:59.425 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-02-12 12:27:59.425 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-02-12 12:27:59.425 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-02-12 12:27:59.425 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.60]
+2025-02-12 12:27:59.431 [restartedMain] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-02-12 12:27:59.431 [restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 162 ms
+2025-02-12 12:27:59.628 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-02-12 12:27:59.690 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-02-12 12:27:59.692 [restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-02-12 12:27:59.815 [restartedMain] INFO  com.korit.springboot_study.SpringbootStudyApplication - Started SpringbootStudyApplication in 0.572 seconds (JVM running for 178.879)
+2025-02-12 12:27:59.816 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
