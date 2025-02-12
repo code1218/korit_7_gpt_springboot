@@ -4,6 +4,7 @@ import com.korit.springboot_study.dto.request.ReqAddAuthorDto;
 import com.korit.springboot_study.dto.request.ReqSearchAuthorDto;
 import com.korit.springboot_study.entity.Author;
 import com.korit.springboot_study.repository.AuthorRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@Slf4j
 public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
