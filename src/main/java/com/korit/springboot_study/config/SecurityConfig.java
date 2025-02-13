@@ -4,10 +4,12 @@ import com.korit.springboot_study.security.exception.CustomAuthenticationEntryPo
 import com.korit.springboot_study.security.filter.CustomAuthenticationFilter;
 import com.korit.springboot_study.security.filter.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -20,8 +22,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http.httpBasic().disable();
         http.formLogin().disable();
 
@@ -29,10 +37,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(
-                        "/api/post/**",
-                        "/api/user/**"
+                        "/swagger-ui/**",
+                        "/v2/api-docs/**",
+                        "/v3/api-docs/**",
+                        "/swagger-resources/**"
                 )
                 .permitAll()
+
+                .antMatchers("/api/auth/**")
+                .permitAll()
+
                 .anyRequest()
                 .authenticated()
                 .and()
