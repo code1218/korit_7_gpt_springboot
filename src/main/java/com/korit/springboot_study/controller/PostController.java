@@ -27,7 +27,6 @@ public class PostController {
                 .created(URI.create(""))
                 .body(new SuccessResponseDto<>(postService.createPost(reqCreatePostDto)));
     }
-
     //Read(단건)
     @TimerAop
     @GetMapping("/api/post/{postId}")

@@ -29,6 +29,8 @@ public class JwtAuthenticationFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
+        System.out.println(request.getRequestURI());
+
         // Bearer Token(JWT)
         String authorization = request.getHeader("Authorization");
 
